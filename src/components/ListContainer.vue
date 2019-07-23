@@ -35,3 +35,24 @@ export default {
     }
 };
 </script>
+
+<style>
+ol {
+  padding-left: 20px;
+  display: block;
+  list-style-type: decimal;
+}
+li {
+  padding: 5px;
+  color: #000;
+  display: list-item;
+  text-align: -webkit-match-parent;
+  list-style-type: decimal;
+}
+li:nth-child(even) {
+  background: #f4ecec;
+}
+.change {
+  text-decoration: line-through;
+}
+</style>
