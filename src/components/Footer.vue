@@ -1,12 +1,13 @@
 <template>
     <div>
-      <button @click="changeStatus('All')">All</button>
-      <button @click="changeStatus('ACTIVE')">Active</button>
-      <button @click="changeStatus('COMPLETE')">Complete</button>
+      <button @click="changeFilter('All')">All</button>
+      <button @click="changeFilter('ACTIVE')">Active</button>
+      <button @click="changeFilter('COMPLETE')">Complete</button>
     </div>
 </template>
 
 <script>
+
 export default {
     name: "Footer",
     data: () => {
@@ -15,8 +16,9 @@ export default {
       }
     },
     methods: {
-      changeStatus(val) {
-        this.$store.commit('chooseItems',val);
+      changeFilter(val) {
+        console.log('changeFilter'+val)
+        this.$store.commit('changeFilter',val);
       }
     }
 };

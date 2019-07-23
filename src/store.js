@@ -23,11 +23,9 @@ const store = new Vuex.Store({
             console.log(payload)
             switch (payload) {
                 case "ACTIVE":
-                    state.status = 'ACTIVE'
-                    console.log(1111)
+                    console.log(state.list.filter(item => item.active === true))
                     return state.list.filter(item => item.active === true);
                 case "COMPLETE":
-                    state.status = 'COMPLETE'
                     console.log(state.list.filter(item => item.active === false))
                 return state.list.filter(item => item.active === false);
                 case "ALL":
@@ -36,9 +34,11 @@ const store = new Vuex.Store({
             }
         },
         changeStatus(state, payload) {
-            console.log(payload)
             state.list.find(n => n.id === payload).active =
             state.list.find(n => n.id === payload).active === true ? false : true;
+        },
+        changeFilter(state, payload) {
+            state.status = payload
         }
     },
     actions: {
