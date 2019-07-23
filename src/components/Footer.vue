@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import bus from '../assets/Bus.js'
 export default {
     name: "Footer",
     data: () => {
@@ -17,8 +16,7 @@ export default {
     },
     methods: {
       changeStatus(val) {
-        this.status = val;
-        bus.$emit("status", this.status)
+        this.$store.commit('chooseItems',val);
       }
     }
 };

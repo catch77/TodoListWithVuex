@@ -2,9 +2,9 @@
     <div class="listContainer">
         <ol>
             <div>
-                <li v-for="n in list"
+                <li v-for="n in $store.state.list"
                 :key="n.id">
-                <input type="checkbox" @change="changeStatus(n.id)"/>
+                <input type="checkbox" @change="$store.commit('changeStatus',n.id)"/>
                     <span :class="{change:!n.active}">{{n.value}}</span>
                 </li>
             </div>
@@ -16,22 +16,8 @@
 
 export default {
     name: "ListContainer",
-    data: function() {
-        return {
-            n: ""            
-        }
-    },
-    props: {
-        list: {
-            type:Array,
-            default: () => []
-        }
-    },
     methods: {
-        changeStatus(id) {
-            this.list.find(n => n.id === id).active =
-            this.list.find(n => n.id === id).active === true ? false : true;
-        }
+
     }
 };
 </script>
