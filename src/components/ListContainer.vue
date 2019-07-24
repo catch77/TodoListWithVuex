@@ -2,7 +2,7 @@
     <div class="listContainer">
         <ol>
             <div>
-                <li v-for="n in $store.state.list"
+                <li v-for="n in chooseItems"
                 :key="n.id">
                 <input type="checkbox" @change="$store.commit('changeStatus',n.id)"/>
                     <span :class="{change:!n.active}">{{n.value}}</span>
@@ -16,8 +16,10 @@
 
 export default {
     name: "ListContainer",
-    methods: {
-
+    computed: {
+        chooseItems() {
+            return this.$store.getters.chooseItems;
+        }
     }
 };
 </script>

@@ -19,20 +19,6 @@ const store = new Vuex.Store({
             console.log(item)
             state.list.push(item)
         },
-        chooseItems(state, payload) {
-            console.log(payload)
-            switch (payload) {
-                case "ACTIVE":
-                    console.log(state.list.filter(item => item.active === true))
-                    return state.list.filter(item => item.active === true);
-                case "COMPLETE":
-                    console.log(state.list.filter(item => item.active === false))
-                return state.list.filter(item => item.active === false);
-                case "ALL":
-                default:
-                return state.list;
-            }
-        },
         changeStatus(state, payload) {
             state.list.find(n => n.id === payload).active =
             state.list.find(n => n.id === payload).active === true ? false : true;
@@ -41,15 +27,22 @@ const store = new Vuex.Store({
             state.status = payload
         }
     },
-    actions: {
-        onPushTodoItem(context) {
-            context.commit('onPushTodoItem')
+    getters: {
+        getItems: state => {
+            return state.items
         },
-        chooseItems(context) {
-            context.commit('chooseItems')
-        },
-        changeStatus(context) {
-            context.commit('changeStatus')
+        chooseItems(state) {
+            switch (state.status) {
+                case "ACTIVE":
+                    console.log(state.list.filter(item => item.active === true))
+                    return state.list.filter(item => item.active);
+                case "COMPLETE":
+                    console.log(state.list.filter(item => item.active === false))
+                return state.list.filter(item => !item.active);
+                case "ALL":
+                default:
+                return state.list;
+            }
         }
     }
 })

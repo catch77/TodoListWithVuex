@@ -1,7 +1,7 @@
 <template>
     <div>
         <InputBar @push="onPushTodoItem($event)"></InputBar>
-        <ListContainer :list="$store.commit('chooseItems', $store.state.status)" ></ListContainer>
+        <ListContainer></ListContainer>
     </div>
 </template>
 
